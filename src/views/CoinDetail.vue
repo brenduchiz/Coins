@@ -52,9 +52,7 @@
           <button
             @click="toggleConverter"
             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-          >
-            {{ fromUsd ? `USD a ${asset.symbol}` : `${asset.symbol} a USD` }}
-          </button>
+          >{{ fromUsd ? `USD a ${asset.symbol}` : `${asset.symbol} a USD` }}</button>
 
           <div class="flex flex-row my-5">
             <label class="w-full" for="convertValue">
@@ -68,9 +66,7 @@
             </label>
           </div>
 
-          <span class="text-xl"
-            >{{ convertResult }} {{ fromUsd ? asset.symbol : 'USD' }}</span
-          >
+          <span class="text-xl">{{ convertResult }} {{ fromUsd ? asset.symbol : 'USD' }}</span>
         </div>
       </div>
 
@@ -84,11 +80,7 @@
 
       <h3 class="text-xl my-10">Mejores Ofertas de Cambio</h3>
       <table>
-        <tr
-          v-for="m in markets"
-          :key="`${m.exchangeId}-${m.priceUsd}`"
-          class="border-b"
-        >
+        <tr v-for="m in markets" :key="`${m.exchangeId}-${m.priceUsd}`" class="border-b">
           <td>
             <b>{{ m.exchangeId }}</b>
           </td>
@@ -102,9 +94,7 @@
             >
               <slot>Obtener Link</slot>
             </px-button>
-            <a v-else class="hover:underline text-green-600" target="_blanck">{{
-              m.url
-            }}</a>
+            <a v-else class="hover:underline text-green-600" target="_blanck">{{ m.url }}</a>
           </td>
         </tr>
       </table>
@@ -137,7 +127,7 @@ export default {
       if (!this.convertValue) {
         return 0
       }
-      console.log(this.fromUsd)
+
       const result = this.fromUsd
         ? this.convertValue / this.asset.priceUsd
         : this.convertValue * this.asset.priceUsd
@@ -177,7 +167,6 @@ export default {
   methods: {
     toggleConverter() {
       this.fromUsd = !this.fromUsd
-      console.log(this.fromUsd)
     },
 
     getWebSite(exchange) {
